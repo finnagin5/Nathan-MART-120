@@ -1,0 +1,37 @@
+ul {
+    color: rgb(143, 190, 16);
+    font-family: sans-serif;
+}
+
+ol {
+    color: crimson;
+    font-family: sans-serif;
+}
+
+h4 {
+    color: rgb(168, 0, 53);
+    font-family: cursive;
+    font-size: 25px;
+}
+
+a {
+    color: rgb(12, 172, 156);
+    font-family: cursive;
+}
+
+h1 {
+    color: rgb(4, 86, 78);
+    font-size: 50px;
+    font-family: sans-serif
+}
+
+p {
+    color: rgb(4, 86, 78);
+    font-family: sans-serif
+}
+
+.frick {
+    color: orangered;
+    font-family: monospace;
+    font-size: 20px;
+}

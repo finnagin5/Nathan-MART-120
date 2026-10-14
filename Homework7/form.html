@@ -1,0 +1,90 @@
+<html>
+
+<head>
+
+    <title>
+        Newsletter
+    </title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script>
+        function checkit() {
+            var check = 0;
+            if (document.getElementById("name1").value == "") {
+                document.getElementById("name1").style.backgroundColor = "red";
+                document.getElementById("req1").innerHTML = "*";
+                check++;
+            }
+            else {
+                document.getElementById("name1").style.backgroundColor = "white";
+                document.getElementById("req1").innerHTML = "";
+            }
+            if (document.getElementById("name2").value == "") {
+                document.getElementById("name2").style.backgroundColor = "red";
+                document.getElementById("req2").innerHTML = "*";
+                check++;
+            }
+            else {
+                document.getElementById("name2").style.backgroundColor = "white";
+                document.getElementById("req2").innerHTML = "";
+            }
+            if (document.getElementById("email").value == "") {
+                document.getElementById("email").style.backgroundColor = "red";
+                document.getElementById("req3").innerHTML = "*";
+                check++;
+            }
+            else {
+                document.getElementById("email").style.backgroundColor = "white";
+                document.getElementById("req3").innerHTML = "";
+            }
+            if (document.getElementById("yes").checked == false && document.getElementById("no").checked == false ) {
+                document.getElementById("req4").innerHTML = "*";
+                check++;
+            }
+            else {
+                document.getElementById("req4").innerHTML = "";
+            }
+            console.log(check);
+            if (check == 0) {
+                window.location.href="index.html";
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1> Please submit your personal information so we can perform suspicious, legally questionable, and morally gray
+        activities using your private information </h1>
+
+    <form action="index.html" type="Post">
+        <p class="frick"> First and Last Name: <br> <input type="text" id="name1"> <span id="req1"></span> <input type="text" id="name2"> <span id="req2"></span> <br>
+            <br> Email Address: <br> <input type="text" id="email"> <span id="req3"></span> <br>
+            <br>
+            DO YOU AGREE TO OUR TERMS, CONDITIONS, DIGITAL MILLENIUM COPYRIGHT ACT TAKEDOWN POLICY,
+            CHILDREN'S ONLINE
+            PRIVACY PROTECTION ACT, AMERICAN DIGITAL PRIVACY ACT OF 1976, CODE OF CONDUCT, DRESS CODE, TERMS OF
+            AGREEMENT,
+            END USER LICENSE AGREEMENT, ONLINE SERVICES AGREEMENT, SUBSCRIPTION TRIAL AND FEE POLICIES, SCAM POLICIES,
+            CONTENT CENSORSHIP AUTHORITY, GOVERNMENT TAKEDOWN REQUEST COMPLIANCES, MANDATORY COOKIE/TRACKER POLICY,
+            EMAIL
+            NOTIFICATIONS ABOUT SITE POLICY UPDATES AND NEW OFFERS, USE OF INFORMATION POLICY, AND MICROPHONE/WEBCAM
+            PERMISSIONS?
+            <br> <br>
+            Yep <input type="radio" name="agree" value="yes" id="yes"> Nope <input type="radio" name="agree" value="no" id="no"> <span id="req4"></span> <br>
+            <br> <button type="button" id="submit" onclick="checkit()">Haha nice</button>
+        </p>
+    </form>
+
+
+    <br> <br> <br>
+    <a href="index.html"> Back to home </a>
+    <br>
+    <a href="story.html"> Game soundtrack lore dump </a>
+    <br>
+    <a href="page4.html"> code demo </a>
+
+</body>
+
+</html>
