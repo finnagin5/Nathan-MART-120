@@ -15,10 +15,10 @@ function setup() {
     addObject(40, 40, 60, 0, 0, 0, .9);
 
     //level objects
-    for (var i = 0; i < 0; i++) {
+    for (var i = 0; i < 10; i++) {
         addObject(floor(random() * 480), floor(random() * 360), floor(random() * 100) + 20, 0, 0, 0, .5 + (random() * .5));
     }
-    for (var i = 0; i < 80; i++) {
+    for (var i = 0; i < 200; i++) {
         addObject(floor(random() * 480), floor(random() * 360), floor(random() * 10) + 10, 0, 0, 0, .95 + (random() * .05));
     }
 }
