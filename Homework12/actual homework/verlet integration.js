@@ -11,18 +11,18 @@ function setup() {
     createCanvas(480, 480);
 
     //mouse object
-    addObject(240, 180, 90, 0, 0, 1, 1);
+    addObject(240, 180, 90, 0, 0, 1, 1, 0);
     obj[5] = (255);
 
     //player object
-    addObject(100, 100, 60, 0, 0, 0, .9);
+    addObject(100, 100, 60, 0, 0, 0, .9, 0);
 
     //level objects
     for (var i = 0; i < 40; i++) {
-        addObject(floor(random() * 480) + 60, floor(random() * 480) + 60, floor(random() * 100) + 20, 0, 0, 0, .9 + (random() * 0));
+        addObject(floor(random() * 480) + 120, floor(random() * 480) + 120, floor(random() * 100) + 20, 0, 0, 0, .9, (random() - .5) / 3);
     }
     for (var i = 0; i < 100; i++) {
-        addObject(floor(random() * 480) + 60, floor(random() * 480) + 60, floor(random() * 10) + 10, 0, 0, 0, .95 + (random() * .05));
+        addObject(floor(random() * 480) + 120, floor(random() * 480) + 120, floor(random() * 10) + 10, 0, 0, 0, .95, (random() - .5) / 3);
     }
 }
 
@@ -63,7 +63,7 @@ function preload() {
 }
 
 // add circle
-function addObject(x, y, rad, rox, roy, lock, damp) {
+function addObject(x, y, rad, rox, roy, lock, damp, speed) {
     obj.push(x);
     obj.push(y);
     obj.push(x);
@@ -74,6 +74,7 @@ function addObject(x, y, rad, rox, roy, lock, damp) {
     obj.push(roy);
     obj.push(lock);
     obj.push(damp);
+    obj.push(speed);
 }
 
 // render goal
@@ -102,16 +103,16 @@ function playerMove() {
 
 // verlet integration sim
 function physicsFrame() {
-    for (var i = 0; i < obj.length; i += 10) {
+    for (var i = 0; i < obj.length; i += 11) {
         if (obj[i + 8] == 0) {
             var xv = obj[i] - obj[i + 2];
             var yv = obj[i + 1] - obj[i + 3];
             obj[i + 2] = obj[i];
             obj[i + 3] = obj[i + 1];
-            obj[i] += xv * obj[i + 9];
-            obj[i + 1] += yv * obj[i + 9];
+            obj[i] += (xv * obj[i + 9]) + obj[i + 10];
+            obj[i + 1] += (yv * obj[i + 9]) + obj[i + 10];
         }
-        for (var t = 0; t < obj.length; t += 10) {
+        for (var t = 0; t < obj.length; t += 11) {
 
             //horribly unoptimized nonsense
             if (i != t) {
@@ -133,8 +134,8 @@ function physicsFrame() {
 
 //draw loop
 function render() {
-    for (var i = 0; i < obj.length; i += 10) {
-        if (i != 10) {
+    for (var i = 0; i < obj.length; i += 11) {
+        if (i != 11) {
             fill(obj[i + 5]);
             circle(mod(obj[i]) - 60, mod(obj[i + 1]) - 60, obj[i + 4]);
         }
@@ -187,7 +188,7 @@ function collide(x1, y1, r1, l1, x2, y2, r2, l2, i, t) {
 //win condition
 function winCon() {
     //detect win
-    if (mod(obj[10]) > 480 && mod(obj[11]) > 480) {
+    if (mod(obj[11]) > 480 && mod(obj[12]) > 480) {
         win = 1;
     }
 
